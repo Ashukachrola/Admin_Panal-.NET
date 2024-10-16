@@ -1,0 +1,45 @@
+﻿﻿@{
+    ViewData["Title"] = "Country Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Admin_panal2.Areas.LOC_Country.Models.LOC_CountryModel
+<main class="main" id="main">
+    <div class="pagetitle">
+        <h1>Country</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index"><i class="bi bi-house-door"></i></a></li>
+                <li class="breadcrumb-item"><span>Country Add</span></li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+    <form class="row g-3" role="form" method="post" asp-controller="LOC_Country" asp-action="LOC_CountrySave" asp-area="LOC_Country">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @Html.HiddenFor(x=>x.CountryID)
+        <div class="col-md-12">
+            <div class="form-floating">
+                <input type="text" class="form-control" asp-for="CountryName" placeholder="Enter Country Name" />
+                <span asp-validation-for="CountryName" class="text-danger"></span>
+                <label for="floatingName">Country Name</label>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-floating">
+                <input type="text" class="form-control" asp-for="CountryCode" placeholder="Enter Country Code" />
+                <span asp-validation-for="CountryCode" class="text-danger"></span>
+                <label for="floatingName">Country Name</label>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-outline-success">Save</button>
+            <a class="btn btn-outline-secondary" asp-area="LOC_Country" asp-controller="LOC_Country" asp-action="LOC_CountryList">Back</a>
+        </div>
+    </form>
+</main>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
